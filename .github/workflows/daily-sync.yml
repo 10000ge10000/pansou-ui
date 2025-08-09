@@ -25,10 +25,10 @@ jobs:
       
       - name: Sync with upstream
         run: |
-          # 如果你想同步特定的上游仓库，请替换以下URL
-          # 以下是示例，假设你要从某个上游仓库同步
-          git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+          # 请将下面的URL替换为你想要同步的上游仓库地址
+          # 例如：https://github.com/original-author/pansou-ui.git
+          git remote add upstream https://github.com/original-author/pansou-ui.git
           git fetch upstream
-          git checkout main
+          git checkout main  # 如果你的默认分支不是main，请修改此处
           git merge upstream/main
           git push origin main
