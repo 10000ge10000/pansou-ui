@@ -1,0 +1,35 @@
+name: Daily Repository Sync
+
+on:
+  schedule:
+    # 每天凌晨3点运行 (UTC时间，对应北京时间11点)
+    - cron: '0 3 * * *'
+  # 允许手动触发工作流
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Sync Repository
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name "10000ge10000"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      
+      - name: Sync with upstream
+        run: |
+          # 如果你想同步特定的上游仓库，请替换以下URL
+          # 以下是示例，假设你要从某个上游仓库同步
+          git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+          git fetch upstream
+          git checkout main
+          git merge upstream/main
+          git push origin main
+```
