@@ -486,6 +486,11 @@
         </div>
         </a>
 
+        <!-- 公告 -->
+        <div class="ios-card p-4 mb-8 bg-green-50">
+             <p class="text-center text-green-600 font-bold">✅ 搜索服务已恢复正常，可以正常使用.</p>
+        </div>
+
         <!-- 搜索框 -->
         <div class="ios-card p-1 mb-8 search-box" id="searchContainer">
             <div class="flex items-center">
@@ -981,7 +986,7 @@
             // 显示加载状态
             showLoading();
             
-            fetch(`https://pansou.252035.xyz/api/search?kw=${encodeURIComponent(keyword)}&plugins=${plugins}`)
+            fetch(`https://api.jkai.de/api/search?kw=${encodeURIComponent(keyword)}&plugins=${plugins}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
